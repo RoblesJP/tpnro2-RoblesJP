@@ -29,11 +29,9 @@ namespace punto1
                     continue;
                 }
             } while (num == null);
-
             Console.WriteLine(">> El cuadrado de {0} es: {1}", num, num*num);
 
             // ################ PROBLEMA 2 #################
-
             int? numerador = null;
             int? denominador = null;
             int? resultado = null;
@@ -41,7 +39,6 @@ namespace punto1
             Console.WriteLine("\nCALCULAR EL COCIENTE ENTRE DOS NUMEROS");
             do
             {
-                
                 try
                 {
                     Console.Write("Ingrese el numerador: ");
@@ -61,7 +58,6 @@ namespace punto1
                     }
                 }
             } while (numerador == null || denominador == null);
-
             Console.WriteLine(">> El resultado de {0}/{1} es {2}", numerador, denominador, resultado);
         }
     }
