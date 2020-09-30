@@ -43,7 +43,7 @@ namespace punto2
 
             Console.Write("Fecha de ingreso: "); Empleado1.FechaDeIngreso = Convert.ToDateTime(Console.ReadLine());
             Console.Write("Fecha de nacimiento: "); Empleado1.FechaDeNacimiento = Convert.ToDateTime(Console.ReadLine());
-            Console.Write("Estado civil: "); Empleado1.EstadoCivil = (EstadoCivil)Convert.ToInt32(Console.ReadLine());
+            Console.Write("Estado civil (0: Casado, 1: Divorciado): "); Empleado1.EstadoCivil = (EstadoCivil)Convert.ToInt32(Console.ReadLine());
                 
             try
             {
@@ -56,7 +56,31 @@ namespace punto2
 
             Console.Write("Sueldo basico: "); Empleado1.SueldoBasico = Convert.ToDouble(Console.ReadLine());
             Console.Write("Cantidad de hijos: "); Empleado1.CantidadDeHijos = Convert.ToInt32(Console.ReadLine());
-            Empleado1.MostrarEmpleado();
+            MostrarEmpleado(Empleado1);
+        }
+
+
+        static void MostrarEmpleado(Empleado Empleado)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Apellido: {0}", Empleado.Apellido);
+            Console.WriteLine("Nombre: {0}", Empleado.Nombre);
+            Console.WriteLine("Fecha de nacimiento: {0}", Empleado.FechaDeNacimiento);
+            Console.WriteLine("Edad: {0}", Empleado.Edad());
+            Console.WriteLine("Direccion: {0}", Empleado.Direccion);
+            Console.WriteLine("Fecha de ingreso: {0}", Empleado.FechaDeIngreso);
+            Console.WriteLine("Estado civil: {0}", Empleado.EstadoCivil);
+            Console.WriteLine("Apellido: {0}", Empleado.Apellido);
+            Console.WriteLine("Cantidad de hijos: {0}", Empleado.CantidadDeHijos);
+            if (Empleado.EstadoCivil == EstadoCivil.Divorciado)
+            {
+                Console.WriteLine("EstadoCivil: {0}", Empleado.EstadoCivil);
+            }
+            Console.WriteLine("Sueldo Basico: ${0}", Empleado.SueldoBasico);
+            Console.WriteLine("Salario: ${0}", Empleado.Salario());
+            Console.WriteLine();
         }
     }
+
+    
 }
