@@ -56,6 +56,16 @@ namespace punto2
 
             Console.Write("Sueldo basico: "); Empleado1.SueldoBasico = Convert.ToDouble(Console.ReadLine());
             Console.Write("Cantidad de hijos: "); Empleado1.CantidadDeHijos = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Titulo universitario (saltear si no tiene): "); Empleado1.TituloUniversitario = Console.ReadLine();
+            try
+            {
+                Console.Write("Universidad: "); Empleado1.Universidad = Console.ReadLine();
+            }
+            catch (InvalidOperationException ex)
+            {
+                Logger.Error(ex);
+            }
+            
             MostrarEmpleado(Empleado1);
         }
 
@@ -68,16 +78,20 @@ namespace punto2
             Console.WriteLine("Fecha de nacimiento: {0}", Empleado.FechaDeNacimiento);
             Console.WriteLine("Edad: {0}", Empleado.Edad());
             Console.WriteLine("Direccion: {0}", Empleado.Direccion);
-            Console.WriteLine("Fecha de ingreso: {0}", Empleado.FechaDeIngreso);
             Console.WriteLine("Estado civil: {0}", Empleado.EstadoCivil);
-            Console.WriteLine("Apellido: {0}", Empleado.Apellido);
             Console.WriteLine("Cantidad de hijos: {0}", Empleado.CantidadDeHijos);
             if (Empleado.EstadoCivil == EstadoCivil.Divorciado)
             {
-                Console.WriteLine("EstadoCivil: {0}", Empleado.EstadoCivil);
+                Console.WriteLine("Fecha de divorcio: {0}", Empleado.FechaDeDivorcio);
             }
+            Console.WriteLine("Fecha de ingreso: {0}", Empleado.FechaDeIngreso);
             Console.WriteLine("Sueldo Basico: ${0}", Empleado.SueldoBasico);
             Console.WriteLine("Salario: ${0}", Empleado.Salario());
+            if (Empleado.TieneTituloUniversitario())
+            {
+                Console.WriteLine("Titulo universitario: ${0}", Empleado.TituloUniversitario);
+                Console.WriteLine("Universidad: ${0}", Empleado.Universidad);
+            }
             Console.WriteLine();
         }
     }
