@@ -67,7 +67,7 @@ namespace punto4
         }
         public double SueldoBasico { get => sueldoBasico; set => sueldoBasico = value; }
 
-        public int Antiguedad()
+        public double Antiguedad()
         {
             DateTime FechaActual = DateTime.Now;
             DateTime FechaZero = new DateTime(1, 1, 1);
@@ -85,32 +85,10 @@ namespace punto4
 
         public double Salario()
         {
-            int antiguedad = this.Antiguedad();
+            double antiguedad = this.Antiguedad();
             double adicional = antiguedad < 20 ? (antiguedad / 100) * this.SueldoBasico : (25 / 100) * this.SueldoBasico;
             double descuento = this.SueldoBasico * 0.15;
             return this.SueldoBasico + adicional - descuento; 
-        }
-
-        public void MostrarEmpleado()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Apellido: {0}", this.Apellido);
-            Console.WriteLine("Nombre: {0}", this.Nombre);
-            Console.WriteLine("Fecha de nacimiento: {0}", this.FechaDeNacimiento);
-            Console.WriteLine("Edad: {0}", this.Edad());
-            Console.WriteLine("Direccion: {0}", this.Direccion);
-            Console.WriteLine("Fecha de ingreso: {0}", this.FechaDeIngreso);
-            Console.WriteLine("Estado civil: {0}", this.EstadoCivil);
-            Console.WriteLine("Apellido: {0}", this.Apellido);
-            Console.WriteLine("Cantidad de hijos: {0}", this.CantidadDeHijos);
-            if (this.EstadoCivil == EstadoCivil.Divorciado)
-            {
-                Console.WriteLine("EstadoCivil: {0}", this.EstadoCivil);
-            }
-            Console.WriteLine("Sueldo Basico: ${0}", this.SueldoBasico);
-            Console.WriteLine("Salario: ${0}", this.Salario());
-            Console.WriteLine();
-        }
-        
+        } 
     }
 }
