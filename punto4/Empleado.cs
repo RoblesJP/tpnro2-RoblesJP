@@ -13,20 +13,22 @@ namespace punto4
     {
         private string apellido;
         private string nombre;
-        private DateTime fechaDeNacimiento;
         private string direccion;
-        private DateTime fechaDeIngreso;
+        private DateTime fechaDeNacimiento;
         private EstadoCivil estadoCivil;
         private int cantidadDeHijos;
         private DateTime fechaDeDivorcio;
+        private DateTime fechaDeIngreso;
         private double sueldoBasico;
+        private string tituloUniversitario;
+        private string universidad;
 
         public string Apellido 
         { 
             get => apellido; 
             set => apellido =  
                 value == "" ? 
-                throw new ArgumentException("Se asigno una cadena de caracteres vacia como apellido del empleado") 
+                throw new ArgumentException("Se asigno una cadena de caracteres vacia como el valor del atrbit") 
                 : 
                 value; 
         }
@@ -66,6 +68,22 @@ namespace punto4
                 throw new InvalidOperationException("Este empleado no esta divorciado"); 
         }
         public double SueldoBasico { get => sueldoBasico; set => sueldoBasico = value; }
+        public string TituloUniversitario { get => tituloUniversitario; set => tituloUniversitario = value.Trim() == "" ? null : value; }
+        public string Universidad 
+        { 
+            get => universidad;
+            set
+            {
+                if (this.TituloUniversitario == null && value.Trim() != "")
+                {
+                    universidad = null;
+                    throw new InvalidOperationException("Este empleado no tiene titulo universitario");
+                } else
+                {
+                    universidad = value.Trim() == "" ? null : value;
+                }
+            }
+        }
 
         public double Antiguedad()
         {
@@ -89,6 +107,17 @@ namespace punto4
             double adicional = antiguedad < 20 ? (antiguedad / 100) * this.SueldoBasico : (25 / 100) * this.SueldoBasico;
             double descuento = this.SueldoBasico * 0.15;
             return this.SueldoBasico + adicional - descuento; 
-        } 
+        }
+
+        public bool TieneTituloUniversitario ()
+        {
+            if (this.TituloUniversitario == null)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
     }
 }
